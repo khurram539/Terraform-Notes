@@ -29,3 +29,7 @@ module "dbserver" {
     dbname = "mydbserver"
     
 }
+
+output "dbprivateip" {
+    value = module.dbserver.privateip
+}
