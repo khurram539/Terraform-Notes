@@ -12,7 +12,7 @@ provider "aws" {
 }
 
 resource "aws_ami_from_instance" "example" {
-  name               = "Gold_Image 09/18/2023"
-  source_instance_id = "i-077394079439e4107"
+  name               = "Gold_Image 12/18/2023"
+  source_instance_id = "i-0ce11afb16ba5ebd8"
 }
 
