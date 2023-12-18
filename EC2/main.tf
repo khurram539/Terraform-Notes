@@ -11,9 +11,9 @@ provider "aws" {
   # Configuration options
 }
 
-resource "aws_instance" "DevOps2" {
-  ami                    = "ami-0b7e8ccd689a48950"
-  instance_type          = "t3.medium"
+resource "aws_instance" "DevBox" {
+  ami                    = "ami-01fdea84725799db3"
+  instance_type          = "t3a.medium"
   key_name               = "Khurram-key"
   monitoring             = true
   vpc_security_group_ids = ["sg-025028548d0e7a3d0"]
@@ -23,6 +23,6 @@ resource "aws_instance" "DevOps2" {
 
 
   tags = {
-    Name = "DevOps2"
+    Name = "DevBox"
   }
 }
