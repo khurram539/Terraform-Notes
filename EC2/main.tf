@@ -12,7 +12,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "DevBox" {
-  ami                    = "ami-01fdea84725799db3"
+  ami                    = "ami-08c641c912159e1fd"
   instance_type          = "t3a.medium"
   key_name               = "Khurram-key"
   monitoring             = true
