@@ -6,6 +6,11 @@ terraform {
     }
   }
 }
+
+provider "aws" {
+    region = "us-east-1"
+    }
+    
 resource "aws_vpc" "test" {
     cidr_block = "172.31.0.0/16"
 }
@@ -38,3 +43,6 @@ resource "aws_route_table_association" "public_subnet_association" {
     subnet_id      = aws_subnet.public_subnet.id
     route_table_id = aws_route_table.public.id
 }
+
+# add region
+
