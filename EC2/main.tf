@@ -11,8 +11,8 @@ provider "aws" {
   # Configuration options
 }
 
-resource "aws_instance" "DevBox" {
-  ami                    = "ami-0f3a75992970122c6"
+resource "aws_instance" "Reactjs" {
+  ami                    = "ami-09b61d2846296a42b"
   instance_type          = "t3a.medium"
   key_name               = "Khurram-key"
   monitoring             = true
@@ -23,6 +23,6 @@ resource "aws_instance" "DevBox" {
 
 
   tags = {
-    Name = "DevBox"
+    Name = "Reactjs"
   }
 }
