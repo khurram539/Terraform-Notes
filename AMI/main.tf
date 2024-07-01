@@ -12,6 +12,6 @@ provider "aws" {
 }
 
 resource "aws_ami_from_instance" "New_AMI" {
-  name               = "Gold_Image 06/03/2024"
-  source_instance_id = "i-029006dee59f17b75"
+  name               = "Gold_Image 07/01/2024"
+  source_instance_id = "i-0ae7c845775dd4229"
 }
