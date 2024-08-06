@@ -11,19 +11,18 @@ provider "aws" {
   # Configuration options
 }
 
-resource "aws_instance" "new_insance" {
-  ami                    = "ami-09b61d2846296a42b"
+resource "aws_instance" "new_instance" {
+  ami                    = "ami-00cac20a558f254a5"
   instance_type          = "t3a.medium"
   key_name               = "Khurram-key"
-  monitoring             = true
-  vpc_security_group_ids = ["sg-025028548d0e7a3d0"]
+    vpc_security_group_ids = ["sg-025028548d0e7a3d0"]
+    subnet_id              = "subnet-08d90b90e9b121c7e"
+  availability_zone      = "us-east-1a"
   associate_public_ip_address = true
-  subnet_id              = "subnet-08d90b90e9b121c7e"
-  availability_zone     = "us-east-1a"
-
-
+  disable_api_termination = true
+  monitoring             = true
 
   tags = {
-    Name = "Reactjs"
+    Name = "Devbox"
   }
 }
