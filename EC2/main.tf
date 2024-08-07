@@ -21,7 +21,12 @@ resource "aws_instance" "new_instance" {
   associate_public_ip_address = true
   disable_api_termination = true
   monitoring             = true
-
+  ebs_optimized          = false
+  root_block_device {
+    volume_size = 30
+    volume_type = "gp2"
+  }
+  
   tags = {
     Name = "Devbox"
   }
