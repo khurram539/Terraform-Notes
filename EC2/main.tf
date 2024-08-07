@@ -29,5 +29,7 @@ resource "aws_instance" "new_instance" {
   
   tags = {
     Name = "Devbox"
+    Environment = "Dev"
+    
   }
 }
