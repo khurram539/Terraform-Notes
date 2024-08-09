@@ -22,6 +22,7 @@ resource "aws_instance" "new_instance" {
   disable_api_termination = true
   monitoring             = true
   ebs_optimized          = false
+  count = 1
   root_block_device {
     volume_size = 30
     volume_type = "gp2"
