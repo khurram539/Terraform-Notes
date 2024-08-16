@@ -1,21 +1,17 @@
 provider "aws" {
-  region = var.region
+  region = "us-west-2"
 }
 
-module "ansible_server" {
-  source = "./modules/ansible_server"
+resource "aws_instance" "ansible_server" {
+  ami           = "ami-0c55b159cbfafe1f0"
+  instance_type = "t2.micro"
 
-  ami                         = var.ami
-  instance_type               = var.instance_type
-  key_name                    = var.key_name
-  vpc_security_group_ids      = var.vpc_security_group_ids
-  subnet_id                   = var.subnet_id
-  availability_zone           = var.availability_zone
-  volume_size                 = var.volume_size
-  volume_type                 = var.volume_type
-  instance_count              = var.instance_count
+  tags = {
+    Name = "AnsibleServer"
+  }
 }
 
-output "ansible_server_ip" {
-  value = module.ansible_server.ansible_server_ip
-}
+# Remove this block if you want to keep the output in outputs.tf
+# output "ansible_server_ip" {
+#   value = aws_instance.ansible_server.public_ip
+# }
