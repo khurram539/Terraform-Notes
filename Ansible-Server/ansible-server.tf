@@ -7,7 +7,7 @@ resource "aws_instance" "ansible_server" {
   key_name                    = "Khurram-key.pem"                 # Add your key pair name
     vpc_security_group_ids    = ["sg-025028548d0e7a3d0"]   # Add your security group ID
     subnet_id                 = "subnet-08d90b90e9b121c7e" # Add your subnet ID
-  availability_zone          =  "us-east-1a"               # Add your availability zone
+  availability_zone           =  "us-east-1a"              # Add your availability zone
   associate_public_ip_address = true                       # Assign a public IP address
   disable_api_termination     = true                       # Prevent accidental termination
   monitoring                  = true                       # Enable detailed monitoring
