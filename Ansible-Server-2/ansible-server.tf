@@ -43,7 +43,7 @@ resource "aws_instance" "ansible_server" {
       "sudo yum install -y git python3 python3-pip",                  # Install Git, Python3, and Pip3
       "sudo pip3 install boto boto3 awscli",                          # Install Boto, Boto3, and AWS CLI
       "sudo chown ec2-user:ec2-user /home/ec2-user/Khurram-key.pem",  # Change ownership of the PEM key
-      "sudo chmod 400 /home/ec2-user/name.pem",                       # Change permissions of the PEM key
+      "sudo chmod 400 /home/ec2-user/Khurram-key.pem",                # Change permissions of the PEM key
       "ssh-keygen -t rsa -N '' -f /home/ec2-user/.ssh/id_rsa",        # Generate SSH key pair
       "cat /home/ec2-user/.ssh/id_rsa.pub >> /home/ec2-user/.ssh/authorized_keys", # Add public key to authorized_keys
       "chmod 600 /home/ec2-user/.ssh/authorized_keys",                             # Change permissions of authorized_keys
