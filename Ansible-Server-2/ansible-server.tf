@@ -55,3 +55,26 @@ resource "aws_instance" "ansible_server" {
 output "ansible_server_ip" {
   value = aws_instance.ansible_server[0].public_ip                                 # Output the public IP address of the instance
 }
+
+
+
+# This code creates an Amazon EC2 instance with the following configuration:
+
+# - AMI: Amazon Linux 2 AMI ID for us-east-1 region
+# - Instance type: t2.small
+# - Key pair name: Khurram-key
+# - Security group ID: sg-025028548d0e7a3d0
+# - Subnet ID: subnet-08d90b90e9b121c7e
+# - Availability zone: us-east-1a
+# - Instance name: AnsibleServer
+# - Root volume size: 50 GB
+# - Root volume type: gp2
+# - Disable API termination: true
+# - Detailed monitoring: true
+# - Unencrypted root volume: false
+
+# The code also includes a provisioner block to transfer the local PEM key file to the remote instance and configure the instance with Ansible, Git, Python3, and Pip3. It also generates an SSH key pair and adds the public key to the authorized_keys file on the instance.
+
+# After running this code, you will have an Amazon EC2 instance running with Ansible installed, Git, Python3, and Pip3 pre-configured, and an SSH key pair generated. You can then use this key pair to connect to the instance using SSH or Ansible.
+
+# Note: Make sure to replace `/root/Khurram-key.pem` with the actual path to your local PEM key file.
