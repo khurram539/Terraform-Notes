@@ -3,8 +3,8 @@ provider "aws" {
 }
 
 resource "aws_instance" "Kubernetes_Control_Plane" {
-  ami                         = "ami-01579e3c813e9114f"    # Amazon Linux 2 AMI ID for us-east-1
-  instance_type               = "t3a.medium"               # Preferred instance type
+  ami                         = "ami-0a5c3558529277641"    # Amazon Linux 2 AMI ID for us-east-1
+  instance_type               = "t2.micro"               # Preferred instance type
   key_name                    = "Khurram-key"              # Add your key pair name
   vpc_security_group_ids      = ["sg-025028548d0e7a3d0"]   # Add your security group ID
   subnet_id                   = "subnet-08d90b90e9b121c7e" # Add your subnet ID
@@ -27,7 +27,7 @@ resource "aws_instance" "Kubernetes_Control_Plane" {
     connection {
       type        = "ssh"
       user        = "ec2-user"
-      private_key = file("/home/ubuntu/Khurram-key.pem")
+      private_key = file("/home/ubuntu/Khurram-key.pem") # Path to your local PEM key
       host        = self.public_ip
     }
   }
@@ -36,21 +36,17 @@ resource "aws_instance" "Kubernetes_Control_Plane" {
     inline = [
       "sudo yum update -y",
       "sudo yum install -y aws-cli",
-      "sudo yum install -y docker",
-      "sudo systemctl start docker",
-      "sudo systemctl enable docker",
-      "curl -LO 'https://dl.k8s.io/release/$(curl -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl'",
-      "chmod +x kubectl",
-      "sudo mv kubectl /usr/local/bin/",
-      "curl --silent --location 'https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz' | tar xz -C /usr/local/bin",
-      "chmod +x /usr/local/bin/eksctl",
-      "echo 'Instance Setup Complete!'"
+      "curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl",
+      "chmod +x ./kubectl",
+      "sudo mv ./kubectl /usr/local/bin/kubectl"
+      
+        
     ]
 
     connection {
       type        = "ssh"
       user        = "ec2-user"
-      private_key = file("/home/ubuntu/Khurram-key.pem")
+      private_key = file("/home/ubuntu/Khurram-key.pem") # Path to your local PEM key
       host        = self.public_ip
     }
   }
