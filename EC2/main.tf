@@ -12,7 +12,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "new_instance" {
-  ami                    = "ami-00cac20a558f254a5"
+  ami                    = "ami-0361b567db5c34c96"
   instance_type          = "t3a.medium"
   key_name               = "Khurram-key"
     vpc_security_group_ids = ["sg-025028548d0e7a3d0"]
