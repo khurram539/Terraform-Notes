@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 variable "instance_ids" {
-  default = ["i-09662a8e5a01956f8", "i-02f4cb01ee5b3da30"]
+  default = ["i-09662a8e5a01956f8", "i-02f4cb01ee5b3da30,i-02141221f5e9073ab"]
 }
 
 # --- IAM Role for Lambda ---
