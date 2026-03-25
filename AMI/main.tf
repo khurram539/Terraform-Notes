@@ -8,11 +8,12 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-east-1"
+  region  = "us-east-1"
+  profile = "default"
 }
 
 resource "aws_ami_from_instance" "New_AMI" {
-  name               = "Window_Server_2025 04/03/2025"
-  source_instance_id = "i-039a926f859a2b808"
+  name               = "RHSA 03/26/2025"
+  source_instance_id = "i-05a352937c930c9a5"
 }
 
