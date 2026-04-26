@@ -13,7 +13,7 @@ provider "aws" {
 }
 
 resource "aws_ami_from_instance" "New_AMI" {
-  name               = "RHSA 03/25/2026"
+  name               = "RHSA 04/25/2026"
   source_instance_id = "i-07b7d2d0e164635cc"
 }
 
