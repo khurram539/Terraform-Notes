@@ -12,12 +12,13 @@ provider "aws" {
 }
 
 resource "aws_instance" "new_instance" {
-  ami                    = "ami-0361b567db5c34c96"
+  ami                    = "ami-08a06634f0da195a3"
   instance_type          = "t3a.medium"
   key_name               = "Khurram-key"
-    vpc_security_group_ids = ["sg-025028548d0e7a3d0"]
+    vpc_security_group_ids = ["sg-0e06cf3a9fea0966d", "sg-03128daff9dfed41b"]
     subnet_id              = "subnet-08d90b90e9b121c7e"
   availability_zone      = "us-east-1a"
+  iam_instance_profile = "AmazonSSMRoleForInstancesQuickSetup"
   associate_public_ip_address = true
   disable_api_termination = true
   monitoring             = true
@@ -31,7 +32,10 @@ resource "aws_instance" "new_instance" {
   
   tags = {
     Name = "Devbox"
-    Environment = "Dev"
+    Environment = "Development"
+    Application = "RedHat Satellite"
+    OS = "RHEL 9.7"
     
   }
+  
 }
