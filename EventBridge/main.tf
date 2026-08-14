@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 variable "instance_ids" {
-  default = ["i-09662a8e5a01956f8", "i-02f4cb01ee5b3da30,i-02141221f5e9073ab"]
+  default = ["i-083f18f676ddabf51", "i-0bf2bf760e8c688cb"]
 }
 
 # --- IAM Role for Lambda ---
@@ -56,14 +56,24 @@ resource "aws_lambda_function" "ec2_scheduler" {
 }
 
 # --- EventBridge Rules (corrected for Eastern Time) ---
+# resource "aws_cloudwatch_event_rule" "start_rule" {
+#   name                = "ec2-start-9am"
+#   schedule_expression = "cron(0 13 ? * MON-FRI *)" # 9 AM EDT/EST (13 UTC)
+# }
+
+# resource "aws_cloudwatch_event_rule" "stop_rule" {
+#   name                = "ec2-stop-5pm"
+#   schedule_expression = "cron(0 21 ? * MON-FRI *)" # 5 PM EDT/EST (21 UTC)
+# }
+
 resource "aws_cloudwatch_event_rule" "start_rule" {
-  name                = "ec2-start-9am"
-  schedule_expression = "cron(0 13 ? * MON-FRI *)" # 9 AM EDT/EST (13 UTC)
+  name                = "ec2-start-9pm"
+  schedule_expression = "cron(0 1 ? * MON-FRI *)" # 9 PM EDT/EST (1 UTC)
 }
 
 resource "aws_cloudwatch_event_rule" "stop_rule" {
-  name                = "ec2-stop-5pm"
-  schedule_expression = "cron(0 21 ? * MON-FRI *)" # 5 PM EDT/EST (21 UTC)
+  name                = "ec2-stop-midnight"
+  schedule_expression = "cron(0 4 ? * MON-FRI *)" # Midnight EDT/EST (4 UTC)
 }
 
 resource "aws_cloudwatch_event_target" "start_target" {
